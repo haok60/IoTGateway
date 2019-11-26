@@ -1,0 +1,5 @@
+demo.thingsboard.io
+1883
+sensors
+v1/gateway/telemetry
+s2IPV0EZVNwxTRYhNFrV

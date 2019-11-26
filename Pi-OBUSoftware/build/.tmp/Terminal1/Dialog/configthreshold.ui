@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>configThreshold</class>
+ <widget class="QDialog" name="configThreshold">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>477</width>
+    <height>312</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>20</y>
+     <width>20</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>59</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pump</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>20</y>
+     <width>59</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="dsb_Temp">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>80</y>
+     <width>66</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="dsb_Humi">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>140</y>
+     <width>66</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="dsb_Light">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>80</y>
+     <width>66</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Temperature</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>140</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Humidity</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>268</x>
+     <y>80</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>lumineux</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>80</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>°C</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>140</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>80</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Lux</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_accept">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>260</y>
+     <width>80</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Accept</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>260</y>
+     <width>80</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>140</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>140</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Soil moisture</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="dsb_mois">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>140</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="dsb_mois_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>180</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>180</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>180</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>time pump</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="timeValue">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>180</y>
+     <width>66</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>180</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>minutes</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>time light</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="timeValueL">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>220</y>
+     <width>66</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>220</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>minutes</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
