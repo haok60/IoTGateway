@@ -40,7 +40,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    Q_INVOKABLE void mySendCommand(int, int);
+    //Q_INVOKABLE void mySendCommand(int, int);
 
 protected:
     void changeEvent(QEvent *e);
@@ -82,18 +82,18 @@ private slots:
     void onoffL();
     void oncountdownP();
     void oncountdownL();
-    void onCommandLR();
+    //void onCommandLR();
     void on_btnPrint_clicked();
    // void on_btnUpdate_clicked();
     void on_btnClear_clicked();
-    void Send_Broadcast();
+    //void Send_Broadcast();
     void autoTakePhoto(QString);
 
     void on_pushButton_clicked();
 //     on_pushButton_2_clicked();
     Q_INVOKABLE void sendCommand(int, int);
     void onOpenCloseButtonClicked();
-    void onGpsData(QString);
+    //void onGpsData(QString);
     void initMap(bool);
     void initListSensor();
     void onNodeJoin(int, QString);
@@ -111,26 +111,26 @@ private slots:
     //Tranceiver
     void onTranceiverData(QString);
     void onTranceiverDataLI(QString);
-    void onreceivedDataLR(QString);
+    //void onreceivedDataLR(QString);
     void onTempAndHum(QString);
     void onTempAndHum1(QString);
     void oncompleteLux(QString);
 	void oncompleteLux1(QString);
-    void onTempAndHumLR(QString);
+    //void onTempAndHumLR(QString);
     void oncompleteMois(QString);
     void oncompleteDust(QString);
     //checkbox
-    void onGpsStatus(bool);
+    //void onGpsStatus(bool);
     //Action
-    void startLinphone();
-    void ShowAbout();
-    void RetaskOne();
-    void RetaskAll();
-    void AddNewSensor();
-    void EditSensorPlace();
-    void ShowSensorInformation();
-    void StartupLocation();
-    void SetupSerialPort();
+    //void startLinphone();
+    //void ShowAbout();
+    //void RetaskOne();
+    //void RetaskAll();
+    //void AddNewSensor();
+    //void EditSensorPlace();
+    //void ShowSensorInformation();
+    //void StartupLocation();
+    //void SetupSerialPort();
     void SendToServer();
     //Push button
     void on_btnExit_clicked();
@@ -152,7 +152,7 @@ private slots:
     void sendMqttData(int, double, QString);
     void sendMqttDataSaved(QString, int, double, QString);
     //
-    void sendImageToWebfake(QString, QString);
+    //void sendImageToWebfake(QString, QString);
     void sendImageToWeb(QString,QString);
     void sendBroadcast();
     void onTempHumi(int, double, double);
@@ -161,13 +161,13 @@ private slots:
     void SendAILUX(int, double);
     void SendAIMois(int,int);
     void SendAIDD(int , double );
-    void SendWarningDust(int);
+    //void SendWarningDust(int);
     void onLux_t(int, double);
     void onMois_t(int, double);
     void onST(QString);
 //    void sendCommandLRHTD(int,int,int);
     //Graph
-    void makePlot();
+    //void makePlot();
 
     /* Chinh sua code cho UAV */
     void WriteDatatoLogfile(QString);

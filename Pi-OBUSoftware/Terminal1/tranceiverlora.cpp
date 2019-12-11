@@ -9,7 +9,7 @@ tranceiverlora::tranceiverlora(QObject *parent):QObject(parent)
     PortSettings settings = {BAUD9600, DATA_8, PAR_NONE, STOP_1, FLOW_OFF, 10};
     port = new QextSerialPort(x.LORA_PORT_DEFAULT, settings, QextSerialPort::Polling);
     enumerator = new QextSerialEnumerator(this);
-    enumerator->setUpNotifications();
+    //enumerator->setUpNotifications();
     connect(timer, SIGNAL(timeout()), SLOT(readDataLR()));
     connect(port, SIGNAL(readyRead()), SLOT(readDataLR()));
 }

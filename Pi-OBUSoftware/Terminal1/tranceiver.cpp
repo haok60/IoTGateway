@@ -16,7 +16,7 @@ Tranceiver::Tranceiver(QObject *parent) :
     PortSettings settings = {BAUD19200, DATA_8, PAR_NONE, STOP_1, FLOW_OFF, 10};
     port = new QextSerialPort("ttyUSB0", settings, QextSerialPort::Polling);
     enumerator = new QextSerialEnumerator(this);
-    enumerator->setUpNotifications();
+    //enumerator->setUpNotifications();
     connect(timer, SIGNAL(timeout()), SLOT(readData()));
     connect(port, SIGNAL(readyRead()), SLOT(readData()));
 }

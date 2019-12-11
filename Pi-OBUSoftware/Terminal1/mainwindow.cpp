@@ -84,8 +84,10 @@ MainWindow::MainWindow(QWidget *parent) :
     gps->moveToThread(thread_gps);
     connect(gps, SIGNAL(workRequested()), thread_gps, SLOT(start()));
     connect(thread_gps, SIGNAL(started()), gps, SLOT(doWork()));
-    connect(gps, SIGNAL(receivedData(QString)), SLOT(onGpsData(QString)));
+    //connect(gps, SIGNAL(receivedData(QString)), SLOT(onGpsData(QString)));
     //database
+    //qDebug()<<"okoko";
+
     db = new DbManager();
     // Tranceiver
     tranceiver = new Tranceiver();
@@ -111,21 +113,25 @@ MainWindow::MainWindow(QWidget *parent) :
     //sendMqttData
     //Lora
     lora = new tranceiverlora();
+
     loraStarted =false;
     thread_lora =new QThread();
+
     lora->moveToThread(thread_lora);
     connect(lora, SIGNAL(workRequestedLR()), thread_lora, SLOT(start()));
+
     connect(thread_lora,SIGNAL(started()),lora,SLOT(doWorkLR()));
-    connect(lora, SIGNAL(receivedDataLR(QString)), SLOT(onreceivedDataLR(QString)));
+    //connect(lora, SIGNAL(receivedDataLR(QString)), SLOT(onreceivedDataLR(QString)));
     //connect(lora, SIGNAL(receivedDataLR(QString)), SLOT(onTranceiverDataLI(QString)));
-    connect(lora, SIGNAL(tempAndHum(QString)), SLOT(onTempAndHumLR(QString)));
+    //connect(lora, SIGNAL(tempAndHum(QString)), SLOT(onTempAndHumLR(QString)));
     //connect(lora, SIGNAL(sendTandH(int,double,double)), SLOT(sendMqttTandHLR(int,double,double)));
     connect(lora, SIGNAL(sendMois(int,int)), SLOT(SendAIMois(int,int)));
     connect(lora, SIGNAL(completeMois(QString)), SLOT(oncompleteMois(QString)));
     connect(lora,SIGNAL(nodeJoinLR(int)),SLOT(onNodeJoinLR(int)));
     connect(lora,SIGNAL(completeDust(QString)), SLOT(oncompleteDust(QString)));
     connect(lora,SIGNAL(sendDust(int,double)),SLOT(SendAIDD(int,double)));
-    connect(lora,SIGNAL(sendWarning(int)),SLOT(SendWarningDust(int)));
+
+    //connect(lora,SIGNAL(sendWarning(int)),SLOT(SendWarningDust(int)));
     connect(lora,SIGNAL(Mois_t(int,double)),SLOT(onMois_t(int,double)));
     connect(lora,SIGNAL(completeST(QString)),SLOT(onST(QString)));
     connect(lora,SIGNAL(runTimerL(int)),SLOT(onrunTimerL(int)));
@@ -136,17 +142,17 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(lora,SIGNAL(LRHTD(int,int,int)),SLOT(sendCommandLRHTD(int,int,int));
     initMap(true);
 
-    connect(ui->actionLinphone, SIGNAL(triggered()), SLOT(startLinphone()));
+    //connect(ui->actionLinphone, SIGNAL(triggered()), SLOT(startLinphone()));
     connect(ui->actionQuit, SIGNAL(triggered()), SLOT(close()));
-    connect(ui->actionAbout_2, SIGNAL(triggered()), SLOT(ShowAbout()));
-    connect(ui->actionRetask_One, SIGNAL(triggered()), SLOT(RetaskOne()));
-    connect(ui->actionRetask_All, SIGNAL(triggered()), SLOT(RetaskAll()));
-    connect(ui->actionNew, SIGNAL(triggered()), SLOT(AddNewSensor()));
-    connect(ui->actionEdit_Place, SIGNAL(triggered()), SLOT(EditSensorPlace()));
-    connect(ui->actionInformation, SIGNAL(triggered()), SLOT(ShowSensorInformation()));
-    connect(ui->actionStartup_Location_Map, SIGNAL(triggered()), SLOT(StartupLocation()));
-    connect(ui->actionSerial_Port, SIGNAL(triggered()), SLOT(SetupSerialPort()));
-    connect(ui->actionServer, SIGNAL(triggered()), SLOT(SendToServer()));
+    //connect(ui->actionAbout_2, SIGNAL(triggered()), SLOT(ShowAbout()));
+    //connect(ui->actionRetask_One, SIGNAL(triggered()), SLOT(RetaskOne()));
+    //connect(ui->actionRetask_All, SIGNAL(triggered()), SLOT(RetaskAll()));
+    //connect(ui->actionNew, SIGNAL(triggered()), SLOT(AddNewSensor()));
+    //connect(ui->actionEdit_Place, SIGNAL(triggered()), SLOT(EditSensorPlace()));
+    //connect(ui->actionInformation, SIGNAL(triggered()), SLOT(ShowSensorInformation()));
+    //connect(ui->actionStartup_Location_Map, SIGNAL(triggered()), SLOT(StartupLocation()));
+    //connect(ui->actionSerial_Port, SIGNAL(triggered()), SLOT(SetupSerialPort()));
+    //connect(ui->actionServer, SIGNAL(triggered()), SLOT(SendToServer()));
 
     //connect(ui->bt_Broadcast, SIGNAL(clicked()), SLOT(sendBroadcast()));
     //nxt cmt
@@ -180,7 +186,6 @@ MainWindow::MainWindow(QWidget *parent) :
     lib_init();
     mqttConnect();
     subscribePressed();
-    qDebug()<<"okoko";
 
 }
 // load output.txt
@@ -301,7 +306,7 @@ void MainWindow::mqttConnect(){
     //qDebug()<<access;
 //    qDebug()<<xx.portMqtt;
 //    qDebug()<<xx.accessToken;
-    qDebug()<<"mqtt!!"<<endl;
+ //   qDebug()<<"mqtt!!"<<endl;
     mosq=new qtmosq();
     //thingsboard
 //    mosq->username_pw_set("vFxbwpQ04fzVqrxnxihI",NULL);
@@ -310,7 +315,7 @@ void MainWindow::mqttConnect(){
     //qDebug(x.accessToken.toAscii());
 //    qDebug(x.hostMqtt.toLatin1());
 //    qDebug()<<x.topic1;
-    mosq->username_pw_set("v1Vs3nkpIiI9zu2GYwH9");
+    mosq->username_pw_set("s2IPV0EZVNwxTRYhNFrV");
 
     connect (mosq, SIGNAL(connected()), this, SLOT(connectEnabled()));
     connect (mosq, SIGNAL(subscribed()), this ,SLOT(subscribed()));
@@ -1143,7 +1148,7 @@ void MainWindow::on_btnView_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    sendMqtt();
+    //sendMqtt();
 //    for(int i=0; i< 50;i++)
 //    {
 //    float a = float(15 + rand() % (45 + 1 - 15));

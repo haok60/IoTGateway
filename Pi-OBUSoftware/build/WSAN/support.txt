@@ -6,7 +6,7 @@
 ./WSAN/timeDetect.txt
 ttyUSB0
 19200
-ttyUSB9
+ttyUSB1
 9600
 ttyUSB1
 9600

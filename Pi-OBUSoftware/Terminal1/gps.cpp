@@ -25,7 +25,7 @@ GPS::GPS(QObject *parent) :
     port = new QextSerialPort("ttyUSB0", settings, QextSerialPort::Polling);
 
     enumerator = new QextSerialEnumerator(this);
-    enumerator->setUpNotifications();
+    //enumerator->setUpNotifications();
     connect(timer, SIGNAL(timeout()), SLOT(readData()));
     connect(port, SIGNAL(readyRead()), SLOT(readData()));
 }
