@@ -88,7 +88,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //database
     //qDebug()<<"okoko";
 
-    db = new DbManager();
+    //db = new DbManager();
+    //DbManager db;
     // Tranceiver
     tranceiver = new Tranceiver();
     tranceiverStarted = false;

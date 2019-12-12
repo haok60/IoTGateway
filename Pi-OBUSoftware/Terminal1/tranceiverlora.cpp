@@ -1,5 +1,6 @@
 #include "tranceiverlora.h"
 #include "readfile.h"
+#include "dbmanager.h"
 tranceiverlora::tranceiverlora(QObject *parent):QObject(parent)
 {
     timer = new QTimer(this);
@@ -185,12 +186,12 @@ void tranceiverlora::readDataLR()
                     int mac = Line.mid(4,2).toInt(&ok,10);
                     double Vo = (double)(5.00*Dust_mesure)/1024.00;
                     qDebug()<<"dust mesure :"<<Dust_mesure;
-                    if(Vo<Voc)
-                    {
-                        Voc = Vo;
-                        break;
-                    }
-                    double dustDensity = (double)(Vo-Voc)*0.2*1000;
+//                    if(Vo<Voc)
+//                    {
+//                        Voc = Vo;
+//                        break;
+//                    }
+                    double dustDensity = (double)(Vo)*0.2*1000;
                     double dustDensity1 = ((int)(dustDensity * 100 + .5) / 100.0);;
 //                    int wrc;
 //                    if(dustDensity<=15.4)wrc=1;
@@ -206,9 +207,10 @@ void tranceiverlora::readDataLR()
                     QString tmp = Line.mid(4,2) + ":" + QString::number(dustDensity1);
                     emit sendDust(mac,dustDensity1);
                     emit completeDust(tmp);
-                    emit insertdata(mac,dustDensity1,"dust");
-
-                    //qDebug()<<tmp;
+                    DbManager db;
+                    //emit insertdata(mac,dustDensity1,"dust");
+                    bool a = db.insertdata(mac,dustDensity1,"dust");
+                    qDebug()<<a;
                     break;
                 }
                 case 5:

@@ -6,8 +6,8 @@
 ./WSAN/timeDetect.txt
 ttyUSB0
 19200
-ttyUSB1
+ttyUSB0
 9600
-ttyUSB1
+ttyUSB0
 9600
 ./WSAN/thresol.txt	
