@@ -6,9 +6,9 @@ tranceiverlora::tranceiverlora(QObject *parent):QObject(parent)
     timer = new QTimer(this);
     timer->setInterval(1000);
 	readfile x;
-    qDebug()<<x.LORA_PORT_DEFAULT;
+    //qDebug()<<x.LORA_PORT_DEFAULT;
     PortSettings settings = {BAUD9600, DATA_8, PAR_NONE, STOP_1, FLOW_OFF, 10};
-    port = new QextSerialPort(x.LORA_PORT_DEFAULT, settings, QextSerialPort::Polling);
+    port = new QextSerialPort("ttyUSB0", settings, QextSerialPort::Polling);
     enumerator = new QextSerialEnumerator(this);
     //enumerator->setUpNotifications();
     connect(timer, SIGNAL(timeout()), SLOT(readDataLR()));
@@ -93,7 +93,7 @@ void tranceiverlora::WriteTextAppend(QString FileName, QString Text)
 void tranceiverlora::readDataLR()
 {
     readfile x;
-    static float Voc=0.6;
+    //static float Voc=0.6;
     int t = port->bytesAvailable();
     if (t) {
         QString Code, Start, End, Image, my_Imgage;

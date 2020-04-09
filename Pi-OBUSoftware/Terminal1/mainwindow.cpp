@@ -196,7 +196,6 @@ void MainWindow::onrunTimerL(int time){   \
     sTimeL=time;
     ui->runL->show();
     ui->countdowL->show();
-
 }
 void MainWindow::onrunTimerP(int time){   \
     timerP->start(1000);

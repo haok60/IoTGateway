@@ -181,6 +181,10 @@ private slots:
 
     //void on_btnSendLora_clicked();
 
+    //void on_btnOpenClose_clicked();
+
+    //void on_boxCommand_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     Console *console;
