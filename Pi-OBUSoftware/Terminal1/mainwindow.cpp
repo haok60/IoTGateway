@@ -124,8 +124,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(thread_lora,SIGNAL(started()),lora,SLOT(doWorkLR()));
     //connect(lora, SIGNAL(receivedDataLR(QString)), SLOT(onreceivedDataLR(QString)));
     //connect(lora, SIGNAL(receivedDataLR(QString)), SLOT(onTranceiverDataLI(QString)));
-    //connect(lora, SIGNAL(tempAndHum(QString)), SLOT(onTempAndHumLR(QString)));
-    //connect(lora, SIGNAL(sendTandH(int,double,double)), SLOT(sendMqttTandHLR(int,double,double)));
+    connect(lora, SIGNAL(sendTemp(int,double,QString)), SLOT(sendMqttData(int,double,QString)));
+    connect(lora, SIGNAL(sendHumi(int,double,QString)), SLOT(sendMqttData(int,double,QString)));
     connect(lora, SIGNAL(sendMois(int,int)), SLOT(SendAIMois(int,int)));
     connect(lora, SIGNAL(completeMois(QString)), SLOT(oncompleteMois(QString)));
     connect(lora,SIGNAL(nodeJoinLR(int)),SLOT(onNodeJoinLR(int)));
@@ -1148,6 +1148,7 @@ void MainWindow::on_btnView_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
+    //lora->writeData("front");
     //sendMqtt();
 //    for(int i=0; i< 50;i++)
 //    {

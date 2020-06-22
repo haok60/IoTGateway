@@ -120,43 +120,23 @@ void tranceiverlora::readDataLR()
                 case 1:// Take temperature and humidity
                     {
                         bool ok;
-//                        unsigned int td = Line.mid(5,4).toUInt(&ok, 16);
-//                        unsigned int rhd = Line.mid(9,4).toUInt(&ok, 16);
-//                        double temp = (double)(td*0.01 - 39.6);
-//                        double rh_lind = (double)(0.0367*rhd - 0.0000015955*rhd*rhd - 2.0468);
-//                        double humi = (double)((temp - 25)*(0.01 + 0.00008*rhd) + rh_lind);
-//                        int mac= Line.mid(3,2).toUInt(&ok);
-//                        if(humi > 100) humi = 100;
-//                        if(humi < 0) humi = 0;
-//                        QTime time;
-//                        QString t = time.currentTime().toString("hh-mm-ss");
-//                        QDate date;
-//                        QString d = date.currentDate().toString("dd/MM/yyyy");
-//                        QString tmp = Line.mid(3,2) + ":" + Line.mid(3,2) + ":" + QString::number(temp) + ":" + QString::number(humi);
+                        int td = Line.mid(6,4).toInt(&ok,16);
+                        int hd = Line.mid(10,4).toInt(&ok,16);
+                        int mac = Line.mid(4,2).toInt(&ok,10);
+                        double temp = (double)td/100.00;
+                        double humi = (double)hd/100.00;
+                        QString tmp= QString::number(mac) +":" + QString::number(temp) +":"+ QString::number(humi);
 
-//    //                    tmp = "\nThong tin nhiet do, do am tu sensor ";
-//    //                    tmp += Line.mid(8,2);
-//    //                    tmp += ", dia chi Ip ";
-//    //                    tmp += Line.mid(4, 4);
-//    //                    tmp += "\nNhiet do:        ";
-//    //                    tmp += QString::number(temp);
-//    //                    tmp += "\nDo am:           ";
-//    //                    tmp += QString::number(humi);
-//    //                    tmp += "\n";
-
-//                        DATA::temp= QString::number(temp);
-//                        DATA::hump= QString::number(humi);
-//                        emit tempAndHum(tmp);
-//                        emit sendTandH(mac,temp,humi);
-//                        QString data = d+":"+t+":"+Line.mid(3,2) + ":" + QString::number(temp) + ":" + QString::number(humi);
-//                        WriteTextAppend(x.HISTORY_FILE, data);
-                        float mac=Line.mid(4,2).toInt(&ok,10);
-                        float td=Line.mid(6,4).toFloat(&ok)/100;
-                        float rhd=Line.mid(10).toFloat(&ok)/100;
-                        QString tmp= QString::number(mac) +":" + QString::number(td) +":"+ QString::number(rhd);
-//                        emit LRHTD(mac,td,rhd);
+                        emit sendTemp(mac,temp,"temperature");
+                        emit sendHumi(mac,humi,"humidity");
                         emit tempAndHum(tmp);
+                        //DbManager db;
+                        //emit insertdata(mac,dustDensity1,"dust");
+                        //bool a = db.insertdata(mac,dustDensity1,"dust");
+                        //qDebug()<<a;
                         break;
+
+
                     }
                 case 2://Take Soil Moisture
                     {
