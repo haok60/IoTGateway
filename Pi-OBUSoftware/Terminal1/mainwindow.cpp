@@ -21,7 +21,7 @@
 #include "qtmosq.h"
 #include "readfile.h"
 #include "confmqtt.h"
-#include "dbmanager.h"
+//#include "dbmanager.h"
 //#include <wiringPi.h>
 
 //class WebPage : public QWebPage
@@ -124,13 +124,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(thread_lora,SIGNAL(started()),lora,SLOT(doWorkLR()));
     //connect(lora, SIGNAL(receivedDataLR(QString)), SLOT(onreceivedDataLR(QString)));
     //connect(lora, SIGNAL(receivedDataLR(QString)), SLOT(onTranceiverDataLI(QString)));
-    connect(lora, SIGNAL(sendTemp(int,double,QString)), SLOT(sendMqttData(int,double,QString)));
-    connect(lora, SIGNAL(sendHumi(int,double,QString)), SLOT(sendMqttData(int,double,QString)));
+    connect(lora, SIGNAL(sendTH(int,double,double)), SLOT(SendAITH(int,double,double)));
+    //connect(lora, SIGNAL(sendHumi(int,double,QString)), SLOT(sendMqttData(int,double,QString)));
     connect(lora, SIGNAL(sendMois(int,int)), SLOT(SendAIMois(int,int)));
     connect(lora, SIGNAL(completeMois(QString)), SLOT(oncompleteMois(QString)));
     connect(lora,SIGNAL(nodeJoinLR(int)),SLOT(onNodeJoinLR(int)));
     connect(lora,SIGNAL(completeDust(QString)), SLOT(oncompleteDust(QString)));
     connect(lora,SIGNAL(sendDust(int,double)),SLOT(SendAIDD(int,double)));
+    connect(lora,SIGNAL(tempAndHum(QString)), SLOT(onTempAndHumLR(QString)));
 
     //connect(lora,SIGNAL(sendWarning(int)),SLOT(SendWarningDust(int)));
     connect(lora,SIGNAL(Mois_t(int,double)),SLOT(onMois_t(int,double)));
@@ -303,18 +304,8 @@ void MainWindow::mqttConnect(){
     s = ba.data();
     ba=xx.accessToken.toLatin1();
     access=ba.data();
-    //qDebug()<<access;
-//    qDebug()<<xx.portMqtt;
-//    qDebug()<<xx.accessToken;
- //   qDebug()<<"mqtt!!"<<endl;
     mosq=new qtmosq();
     //thingsboard
-//    mosq->username_pw_set("vFxbwpQ04fzVqrxnxihI",NULL);
-
-    //mqttcloud
-    //qDebug(x.accessToken.toAscii());
-//    qDebug(x.hostMqtt.toLatin1());
-//    qDebug()<<x.topic1;
     mosq->username_pw_set("s2IPV0EZVNwxTRYhNFrV");
 
     connect (mosq, SIGNAL(connected()), this, SLOT(connectEnabled()));
@@ -322,11 +313,26 @@ void MainWindow::mqttConnect(){
     connect (mosq, SIGNAL(messageReceived(QString)), this, SLOT(getSubMQTT(QString)));
     mosq->connect_async("demo.thingsboard.io",1883,60);
     mosq->loop_start();
-
-    //qDebug()<<"end";
 }
+void MainWindow::reConnect(){
+    char* s,*access;
+    QByteArray ba=xx.hostMqtt.toLatin1();
+    s = ba.data();
+    ba=xx.accessToken.toLatin1();
+    access=ba.data();
+    mosq=new qtmosq();
+    //thingsboard
+    mosq->username_pw_set("s2IPV0EZVNwxTRYhNFrV");
+
+//    connect (mosq, SIGNAL(connected()), this, SLOT(connectEnabled()));
+//    connect (mosq, SIGNAL(subscribed()), this ,SLOT(subscribed()));
+//    connect (mosq, SIGNAL(messageReceived(QString)), this, SLOT(getSubMQTT(QString)));
+    mosq->connect_async("demo.thingsboard.io",1883,60);
+    mosq->loop_start();
+}
+
 void MainWindow::connectEnabled(){
-    console->insertPlainText("connect to MQTT !!!\n");
+    //console->insertPlainText("connect to MQTT !!!\n");
 }
 void MainWindow::sendMqtt(){
 //    confmqtt x;
@@ -400,8 +406,9 @@ void MainWindow::getSubMQTT(QString mess){
 
 void MainWindow::sendMqttData(int mac,double data,QString type)
 {
+    reConnect();
     QString model="T1000";
-    QString name="P1-SN-0";
+    QString name="Sensor-0";
     name.append(QString::number(mac));
     //qDebug()<<name;
     //nxt sua
@@ -421,6 +428,7 @@ void MainWindow::sendMqttData(int mac,double data,QString type)
     QByteArray topic= xx.topic2.toAscii();
     mosq->publish(mosq->getMID(),topic.data(),datasend.size(),datasend.data(),2,false);
     console->insertPlainText("Sent data to the server!!! \r\n");
+
 }
 void MainWindow::sendMqttDataSaved(QString time, int mac,double data,QString type)
 {
@@ -1543,7 +1551,7 @@ void MainWindow::oncompleteDust(QString data)
     //QString mac = data_lst.value(0);
     //int index  = getIndexMarker(mac.toInt());
     //ListSensor[index]->cur_temp = data_lst.value(2).toDouble();
-qDebug()<<data;
+    qDebug()<<data;
     tmp = "\n["+QTime::currentTime().toString()+"] " +"information concentration of dust from sensor ";
     tmp += data_lst.value(0);
     //tmp += ", Address Ip ";
@@ -1556,7 +1564,27 @@ qDebug()<<data;
     console->insertPlainText(tmp + "\n");
     receivedFlag = true;
 }
-
+void MainWindow::onTempAndHumLR(QString data)
+{
+    QString tmp;
+    QStringList data_lst = data.split(":");
+    console->moveCursor(QTextCursor::End);
+    //QString mac = data_lst.value(0);
+    //int index  = getIndexMarker(mac.toInt());
+    //ListSensor[index]->cur_temp = data_lst.value(2).toDouble();
+qDebug()<<data;
+    tmp = "\n["+QTime::currentTime().toString()+"] " +"information from sensor ";
+    tmp += data_lst.value(0);
+    //tmp += ", Address Ip ";
+    //tmp += data_lst.value(1);
+    tmp += "\nTempperature:        ";
+    tmp += data_lst.value(1);
+    tmp += "\nHumidity:        ";
+    tmp += data_lst.value(2);
+    //WriteDatatoLogfile(tmp);
+    console->insertPlainText(tmp + "\n");
+    receivedFlag = true;
+}
 //
 // Sang loc du lieu cho Nhiet do - do am
 void MainWindow::SendAITH(int mac, double temp, double humi)
@@ -1718,7 +1746,7 @@ void MainWindow::SendAIMois(int mac,int Mois) {
 }
 //Sang lọc du lieu cho dust density
 void MainWindow::SendAIDD(int mac, double dus){
-    sendMqttData(mac,dus,"dust density(ug/m3)");
+    sendMqttData(mac,dus,"dust");
 //    QString smac;
 //    if(mac<10){
 //        smac.append(QString::number(mac));

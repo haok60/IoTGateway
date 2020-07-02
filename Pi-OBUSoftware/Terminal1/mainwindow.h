@@ -116,7 +116,7 @@ private slots:
     void onTempAndHum1(QString);
     void oncompleteLux(QString);
 	void oncompleteLux1(QString);
-    //void onTempAndHumLR(QString);
+    void onTempAndHumLR(QString);
     void oncompleteMois(QString);
     void oncompleteDust(QString);
     //checkbox
@@ -140,6 +140,7 @@ private slots:
     //mqtt
     void sendMqtt();
     void mqttConnect();
+    void reConnect();
     void connectEnabled();
     void subscribePressed();
     void subscribed();

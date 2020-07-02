@@ -32,7 +32,7 @@ signals:
     void receiveCompletely(QString,QString);
     void motionDetected(QString);
     //nxt mqtt
-    void sendTemp(int,double,QString);
+    void sendTH(int,double,double);
     void sendHumi(int,double,QString);
     void completeLux(QString);
     void sendLux(int,double);

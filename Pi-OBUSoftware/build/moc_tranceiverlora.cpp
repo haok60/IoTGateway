@@ -39,26 +39,26 @@ static const uint qt_meta_data_tranceiverlora[] = {
      140,  138,   15,   15, 0x05,
      175,   15,   15,   15, 0x05,
      202,  199,   15,   15, 0x05,
-     231,  199,   15,   15, 0x05,
-     260,   15,   15,   15, 0x05,
-     281,  138,   15,   15, 0x05,
-     301,  138,   15,   15, 0x05,
-     319,   15,   15,   15, 0x05,
-     341,  138,   15,   15, 0x05,
-     362,   15,   15,   15, 0x05,
-     384,   15,   15,   15, 0x05,
-     401,  138,   15,   15, 0x05,
-     420,   15,   15,   15, 0x05,
-     440,   15,   15,   15, 0x05,
-     455,   15,   15,   15, 0x05,
-     470,   15,   15,   15, 0x05,
-     477,   15,   15,   15, 0x05,
-     484,  199,   15,   15, 0x05,
-     503,  199,   15,   15, 0x05,
+     228,  199,   15,   15, 0x05,
+     257,   15,   15,   15, 0x05,
+     278,  138,   15,   15, 0x05,
+     298,  138,   15,   15, 0x05,
+     316,   15,   15,   15, 0x05,
+     338,  138,   15,   15, 0x05,
+     359,   15,   15,   15, 0x05,
+     381,   15,   15,   15, 0x05,
+     398,  138,   15,   15, 0x05,
+     417,   15,   15,   15, 0x05,
+     437,   15,   15,   15, 0x05,
+     452,   15,   15,   15, 0x05,
+     467,   15,   15,   15, 0x05,
+     474,   15,   15,   15, 0x05,
+     481,  199,   15,   15, 0x05,
+     500,  199,   15,   15, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-     531,   15,   15,   15, 0x0a,
-     544,   15,   15,   15, 0x0a,
+     528,   15,   15,   15, 0x0a,
+     541,   15,   15,   15, 0x0a,
 
        0        // eod
 };
@@ -70,7 +70,7 @@ static const char qt_meta_stringdata_tranceiverlora[] = {
     "tempAndHum1(QString)\0,\0"
     "receiveCompletely(QString,QString)\0"
     "motionDetected(QString)\0,,\0"
-    "sendTemp(int,double,QString)\0"
+    "sendTH(int,double,double)\0"
     "sendHumi(int,double,QString)\0"
     "completeLux(QString)\0sendLux(int,double)\0"
     "sendMois(int,int)\0completeMois(QString)\0"
@@ -96,7 +96,7 @@ void tranceiverlora::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 5: _t->tempAndHum1((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 6: _t->receiveCompletely((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 7: _t->motionDetected((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 8: _t->sendTemp((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
+        case 8: _t->sendTH((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
         case 9: _t->sendHumi((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 10: _t->completeLux((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 11: _t->sendLux((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
@@ -215,7 +215,7 @@ void tranceiverlora::motionDetected(QString _t1)
 }
 
 // SIGNAL 8
-void tranceiverlora::sendTemp(int _t1, double _t2, QString _t3)
+void tranceiverlora::sendTH(int _t1, double _t2, double _t3)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);

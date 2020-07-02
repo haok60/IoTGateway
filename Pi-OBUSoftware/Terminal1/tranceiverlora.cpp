@@ -1,6 +1,6 @@
 #include "tranceiverlora.h"
 #include "readfile.h"
-#include "dbmanager.h"
+//#include "dbmanager.h"
 tranceiverlora::tranceiverlora(QObject *parent):QObject(parent)
 {
     timer = new QTimer(this);
@@ -51,7 +51,7 @@ void tranceiverlora::WriteAppend(QString FileName, QString Image)
 
 int tranceiverlora::CheckCodeLora(QString code)
 {
-    if(!code.compare("#LD")) return 1;
+    if(!code.compare("#LT")) return 1;
     if(!code.compare("#LA")) return 1;
     if(!code.compare("#LE")) return 2;
     if(!code.compare("#LJ")) return 3;
@@ -120,16 +120,16 @@ void tranceiverlora::readDataLR()
                 case 1:// Take temperature and humidity
                     {
                         bool ok;
-                        int td = Line.mid(6,4).toInt(&ok,16);
-                        int hd = Line.mid(10,4).toInt(&ok,16);
+                        int td = Line.mid(6,4).toInt(&ok,10);
+                        int hd = Line.mid(10,4).toInt(&ok,10);
                         int mac = Line.mid(4,2).toInt(&ok,10);
                         double temp = (double)td/100.00;
                         double humi = (double)hd/100.00;
                         QString tmp= QString::number(mac) +":" + QString::number(temp) +":"+ QString::number(humi);
 
-                        emit sendTemp(mac,temp,"temperature");
-                        emit sendHumi(mac,humi,"humidity");
                         emit tempAndHum(tmp);
+                        emit sendTH(mac,temp,humi);
+                        //emit sendHumi(mac,humi,"humidity");
                         //DbManager db;
                         //emit insertdata(mac,dustDensity1,"dust");
                         //bool a = db.insertdata(mac,dustDensity1,"dust");
@@ -185,12 +185,13 @@ void tranceiverlora::readDataLR()
 //                    }
 
                     QString tmp = Line.mid(4,2) + ":" + QString::number(dustDensity1);
-                    emit sendDust(mac,dustDensity1);
+
                     emit completeDust(tmp);
-                    DbManager db;
+                    emit sendDust(mac,dustDensity1);
+                    //DbManager db;
                     //emit insertdata(mac,dustDensity1,"dust");
-                    bool a = db.insertdata(mac,dustDensity1,"dust");
-                    qDebug()<<a;
+                    //bool a = db.insertdata(mac,dustDensity1,"dust");
+                    //qDebug()<<a;
                     break;
                 }
                 case 5:

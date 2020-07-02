@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      51,   14, // methods
+      53,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,30 +59,32 @@ static const uint qt_meta_data_MainWindow[] = {
      491,   11,   11,   11, 0x08,
      515,   11,   11,   11, 0x08,
      539,   11,   11,   11, 0x08,
-     554,   11,   11,   11, 0x08,
-     575,   11,   11,   11, 0x08,
-     596,   11,   11,   11, 0x08,
-     608,   11,   11,   11, 0x08,
-     619,   11,   11,   11, 0x08,
-     633,   11,   11,   11, 0x08,
-     650,   11,   11,   11, 0x08,
+     563,   11,   11,   11, 0x08,
+     578,   11,   11,   11, 0x08,
+     599,   11,   11,   11, 0x08,
+     620,   11,   11,   11, 0x08,
+     632,   11,   11,   11, 0x08,
+     643,   11,   11,   11, 0x08,
+     657,   11,   11,   11, 0x08,
      669,   11,   11,   11, 0x08,
-     682,   11,   11,   11, 0x08,
-     705,  702,   11,   11, 0x08,
-     742,  738,   11,   11, 0x08,
-     788,  197,   11,   11, 0x08,
-     820,   11,   11,   11, 0x08,
-     836,  702,   11,   11, 0x08,
-     866,  197,   11,   11, 0x08,
-     889,  702,   11,   11, 0x08,
-     917,  197,   11,   11, 0x08,
-     939,  197,   11,   11, 0x08,
-     959,  197,   11,   11, 0x08,
-     980,  197,   11,   11, 0x08,
-    1000,  197,   11,   11, 0x08,
-    1021,   11,   11,   11, 0x08,
-    1035,   11,   11,   11, 0x08,
-    1063,   11,   11,   11, 0x08,
+     686,   11,   11,   11, 0x08,
+     705,   11,   11,   11, 0x08,
+     718,   11,   11,   11, 0x08,
+     741,  738,   11,   11, 0x08,
+     778,  774,   11,   11, 0x08,
+     824,  197,   11,   11, 0x08,
+     856,   11,   11,   11, 0x08,
+     872,  738,   11,   11, 0x08,
+     902,  197,   11,   11, 0x08,
+     925,  738,   11,   11, 0x08,
+     953,  197,   11,   11, 0x08,
+     975,  197,   11,   11, 0x08,
+     995,  197,   11,   11, 0x08,
+    1016,  197,   11,   11, 0x08,
+    1036,  197,   11,   11, 0x08,
+    1057,   11,   11,   11, 0x08,
+    1071,   11,   11,   11, 0x08,
+    1099,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -101,10 +103,11 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "onTranceiverDataLI(QString)\0"
     "onTempAndHum(QString)\0onTempAndHum1(QString)\0"
     "oncompleteLux(QString)\0oncompleteLux1(QString)\0"
-    "oncompleteMois(QString)\0oncompleteDust(QString)\0"
-    "SendToServer()\0on_btnExit_clicked()\0"
-    "on_btnView_clicked()\0sendtoWeb()\0"
-    "sendMqtt()\0mqttConnect()\0connectEnabled()\0"
+    "onTempAndHumLR(QString)\0oncompleteMois(QString)\0"
+    "oncompleteDust(QString)\0SendToServer()\0"
+    "on_btnExit_clicked()\0on_btnView_clicked()\0"
+    "sendtoWeb()\0sendMqtt()\0mqttConnect()\0"
+    "reConnect()\0connectEnabled()\0"
     "subscribePressed()\0subscribed()\0"
     "getSubMQTT(QString)\0,,\0"
     "sendMqttData(int,double,QString)\0,,,\0"
@@ -150,33 +153,35 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 21: _t->onTempAndHum1((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 22: _t->oncompleteLux((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 23: _t->oncompleteLux1((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 24: _t->oncompleteMois((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 25: _t->oncompleteDust((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 26: _t->SendToServer(); break;
-        case 27: _t->on_btnExit_clicked(); break;
-        case 28: _t->on_btnView_clicked(); break;
-        case 29: _t->sendtoWeb(); break;
-        case 30: _t->sendMqtt(); break;
-        case 31: _t->mqttConnect(); break;
-        case 32: _t->connectEnabled(); break;
-        case 33: _t->subscribePressed(); break;
-        case 34: _t->subscribed(); break;
-        case 35: _t->getSubMQTT((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 36: _t->sendMqttData((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
-        case 37: _t->sendMqttDataSaved((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
-        case 38: _t->sendImageToWeb((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 39: _t->sendBroadcast(); break;
-        case 40: _t->onTempHumi((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
-        case 41: _t->sendCommandLR((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 42: _t->SendAITH((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
-        case 43: _t->SendAILUX((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
-        case 44: _t->SendAIMois((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 45: _t->SendAIDD((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
-        case 46: _t->onLux_t((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
-        case 47: _t->onMois_t((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
-        case 48: _t->onST((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 49: _t->WriteDatatoLogfile((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 50: _t->on_btnConfigThreshol_clicked(); break;
+        case 24: _t->onTempAndHumLR((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 25: _t->oncompleteMois((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 26: _t->oncompleteDust((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 27: _t->SendToServer(); break;
+        case 28: _t->on_btnExit_clicked(); break;
+        case 29: _t->on_btnView_clicked(); break;
+        case 30: _t->sendtoWeb(); break;
+        case 31: _t->sendMqtt(); break;
+        case 32: _t->mqttConnect(); break;
+        case 33: _t->reConnect(); break;
+        case 34: _t->connectEnabled(); break;
+        case 35: _t->subscribePressed(); break;
+        case 36: _t->subscribed(); break;
+        case 37: _t->getSubMQTT((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 38: _t->sendMqttData((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
+        case 39: _t->sendMqttDataSaved((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
+        case 40: _t->sendImageToWeb((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 41: _t->sendBroadcast(); break;
+        case 42: _t->onTempHumi((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
+        case 43: _t->sendCommandLR((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 44: _t->SendAITH((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
+        case 45: _t->SendAILUX((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
+        case 46: _t->SendAIMois((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 47: _t->SendAIDD((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
+        case 48: _t->onLux_t((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
+        case 49: _t->onMois_t((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
+        case 50: _t->onST((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 51: _t->WriteDatatoLogfile((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 52: _t->on_btnConfigThreshol_clicked(); break;
         default: ;
         }
     }
@@ -214,9 +219,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 51)
+        if (_id < 53)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 51;
+        _id -= 53;
     }
     return _id;
 }
